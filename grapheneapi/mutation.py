@@ -269,7 +269,303 @@ class DeleteMarket(graphene.Mutation):
         market.delete()
     
         return DeleteMarket(market=None)
+
+
+class CreateCategory(graphene.Mutation):
+    class Arguments:
+        name = graphene.String(required=True)
+        description = graphene.String(required=True)
+
+    category = graphene.Field(CategoryType)
+
+    def mutate(self, info, name, description):
+        category = Category.objects.create(name=name, description=description)
+
+        return CreateCategory(category=category)
+
+
+class UpdateCategory(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+        name = graphene.String()
+        description = graphene.String()
     
+    category = graphene.Field(CategoryType)
+
+    def mutate(self, info, id, name=None, description=None):
+        category = Category.objects.get(id=id)
+
+        if name:
+            category.name = name
+
+        if description:
+            category.description = description
+
+        category.save()
+        return UpdateCategory(category=category)
+
+
+class DeleteCategory(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+
+    category = graphene.Field(CategoryType)
+
+    def mutate(self, info, id):
+        category = Category.objects.get(id=id)
+        category.delete()
+
+        return DeleteCategory(category=None)
+
+
+class CreateProduct(graphene.Mutation):
+    class Arguments:
+        market = graphene.ID(required=True)
+        image = graphene.String(required=True)
+        code = graphene.String(required=True)
+        name = graphene.String(required=True)
+        brand = graphene.String()
+        category = graphene.ID(required=True)
+        price = graphene.Decimal(required=True)
+        stock = graphene.Int()
+        description = graphene.String()
+        calories = graphene.Float()
+        fat = graphene.Float()
+        carbohydrates = graphene.Float()
+        protein = graphene.Float()
+        fiber = graphene.Float()
+    
+    product = graphene.Field(ProductType)
+
+    def mutate(
+            self, info, market, image, code, name, brand, category, price, stock, description,
+            calories, fat, carbohydrates, protein, fiber
+        ):
+        product = Product.objects.create(
+            market=market,
+            image=image,
+            code=code,
+            name=name,
+            brand=brand,
+            category=category,
+            price=price,
+            stock=stock,
+            description=description,
+            calories=calories,
+            fat=fat,
+            carbohydrates=carbohydrates,
+            protein=protein,
+            fiber=fiber
+        )
+
+        return CreateProduct(product=product)
+
+
+class UpdateProduct(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+        image = graphene.String()
+        code = graphene.String()
+        name = graphene.String()
+        brand = graphene.String()
+        category = graphene.ID()
+        price = graphene.Decimal()
+        stock = graphene.Int()
+        description = graphene.String()
+        calories = graphene.Float()
+        fat = graphene.Float()
+        carbohydrates = graphene.Float()
+        protein = graphene.Float()
+        fiber = graphene.Float()
+    
+    product = graphene.Field(ProductType)
+
+    def mutate(
+            self, info, id, image=None, code=None, name=None, brand=None, category=None, price=None, stock=None,
+            description=None, calories=None, fat=None, carbohydrates=None, protein=None, fiber=None
+        ):
+        product = Product.objects.get(id=id)
+
+        if image:
+            product.image = image
+
+        if code:
+            product.code = code
+        
+        if name:
+            product.name = name
+        
+        if brand:
+            product.brand = brand
+        
+        if category:
+            category = Category.objects.get(id=category)
+            product.category = category
+        
+        if price:
+            product.price = price
+        
+        if stock:
+            product.stock = stock
+        
+        if description:
+            product.description = description
+        
+        if calories:
+            product.calories = calories
+        
+        if fat:
+            product.fat = fat
+        
+        if carbohydrates:
+            product.carbohydrates = carbohydrates
+        
+        if protein:
+            product.protein = protein
+        
+        if fiber:
+            product.fiber = fiber
+        
+        product.save()
+        return UpdateProduct(product=product)
+
+
+class DeleteProduct(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+    
+    product = graphene.Field(ProductType)
+
+    def mutate(self, info, id):
+        product = Product.objects.get(id=id)
+        product.delete()
+
+        return DeleteProduct(product=None)
+
+
+class CreateAddress(graphene.Mutation):
+    class Arguments:
+        city = graphene.String(required=True)
+        street = graphene.String(required=True)
+        house = graphene.String(required=True)
+        flat = graphene.String(required=True)
+        other = graphene.String()
+    
+    address = graphene.Field(AddressType)
+
+    def mutate(self, info, city, street, house, flat, other):
+        address = Address.objects.create(
+            city=city,
+            street=street,
+            house=house,
+            flat=flat,
+            other=other
+        )
+
+        return CreateAddress(address=address)
+
+
+class UpdateAddress(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+        city = graphene.String()
+        street = graphene.String()
+        house = graphene.String()
+        flat = graphene.String()
+        other = graphene.String()
+    
+    address = graphene.Field(AddressType)
+
+    def mutate(self, info, id, city=None, street=None, house=None, flat=None, other=None):
+        address = Address.objects.get(id=id)
+
+        if city:
+            address.city = city
+
+        if street:
+            address.street = street
+
+        if house:
+            address.house = house
+
+        if flat:
+            address.flat = flat
+
+        if other:
+            address.other = other
+
+        address.save()
+        return UpdateAddress(address=address)
+
+
+class DeleteAddress(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+    
+    address = graphene.Field(AddressType)
+
+    def mutate(self, info, id):
+        address = Address.objects.get(id=id)
+        address.delete()
+
+        return DeleteAddress(address=None)
+
+
+class CreateAccount(graphene.Mutation):
+    class Arguments:
+        email = graphene.String(required=True)
+        password = graphene.String(required=True)
+        username = graphene.String(required=True)
+
+    account = graphene.Field(AccountType)
+
+    def mutate(self, info, email, password, username):
+        account = Account.objects.create_user(
+            email=email,
+            password=password,
+            username=username
+        )
+
+        return CreateAccount(account=account)
+
+
+class UpdateAccount(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+        email = graphene.String()
+        password = graphene.String()
+        username = graphene.String()
+
+    account = graphene.Field(AccountType)
+
+    def mutate(self, info, id, email=None, password=None, username=None):
+        account = Account.objects.get(id=id)
+
+        if email:
+            account.email = email
+
+        if password:
+            account.password = password
+
+        if username:
+            account.username = username
+
+        account.save()
+        return UpdateAccount(account=account)
+    
+
+class DeleteAccount(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+
+    account = graphene.Field(AccountType)
+
+    def mutate(self, info, id):
+        account = Account.objects.get(id=id)
+        account.delete()
+
+        return DeleteAccount(account=None)
+
 
 class Mutation(graphene.ObjectType):
     create_chat_support = CreateChatSupport.Field()
@@ -284,3 +580,18 @@ class Mutation(graphene.ObjectType):
     update_merket = UpdateMarket.Field()
     delete_market = DeleteMarket.Field()
 
+    create_category = CreateCategory.Field()
+    update_category = UpdateCategory.Field()
+    delete_category = DeleteCategory.Field()
+
+    create_product = CreateProduct.Field()
+    update_product = UpdateProduct.Field()
+    delete_product = DeleteProduct.Field()
+
+    create_address = CreateAddress.Field()
+    update_address = UpdateAddress.Field()
+    delete_address = DeleteAddress.Field()
+
+    create_account = CreateAccount.Field()
+    update_account = UpdateAccount.Field()
+    delete_account = DeleteAccount.Field()
