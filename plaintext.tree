@@ -1,0 +1,86 @@
+.
+├── apps
+│   ├── accounts
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── delivery
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── markets
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   ├── tests.py
+│   │   └── views.py
+│   └── support
+│       ├── admin.py
+│       ├── apps.py
+│       ├── __init__.py
+│       ├── migrations
+│       ├── models.py
+│       ├── __pycache__
+│       ├── signals.py
+│       ├── tests.py
+│       └── views.py
+├── config.ini
+├── create_project.md
+├── db.sqlite3
+├── LICENSE
+├── manage.py
+├── media
+├── OnlineShopRestApi
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-311.pyc
+│   │   ├── settings.cpython-311.pyc
+│   │   └── urls.cpython-311.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── plaintext.tree
+├── push.sh
+├── README.md
+├── requirements.txt
+├── static
+└── venv
+    ├── bin
+    │   ├── activate
+    │   ├── activate.csh
+    │   ├── activate.fish
+    │   ├── activate.nu
+    │   ├── activate.ps1
+    │   ├── activate_this.py
+    │   ├── django-admin
+    │   ├── pip
+    │   ├── pip3
+    │   ├── pip-3.11
+    │   ├── pip3.11
+    │   ├── python -> /usr/bin/python3
+    │   ├── python3 -> python
+    │   ├── python3.11 -> python
+    │   ├── sqlformat
+    │   ├── wheel
+    │   ├── wheel3
+    │   ├── wheel-3.11
+    │   └── wheel3.11
+    ├── lib
+    │   └── python3.11
+    └── pyvenv.cfg
+
+22 directories, 62 files
