@@ -80,4 +80,3 @@ class Query(graphene.ObjectType):
     def resolve_notification_support_model(self, info):
         return NotificationSupport.objects.all()
     
-
