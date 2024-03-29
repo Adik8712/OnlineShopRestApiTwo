@@ -40,16 +40,36 @@
 ├── config.ini
 ├── create_project.md
 ├── db.sqlite3
+├── Dockerfile
+├── grapheneapi
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   ├── mutation.py
+│   ├── __pycache__
+│   │   ├── apps.cpython-311.pyc
+│   │   ├── __init__.cpython-311.pyc
+│   │   ├── mutation.cpython-311.pyc
+│   │   ├── schemas.cpython-311.pyc
+│   │   └── urls.cpython-311.pyc
+│   ├── schemas.py
+│   └── urls.py
 ├── LICENSE
 ├── manage.py
 ├── media
+│   └── users_images
+│       ├── destiny-2-beyond-light-2021-4k-4r-2048x1152.jpg
+│       └── wallpaperflare.com_wallpaper.jpg
 ├── OnlineShopRestApi
 │   ├── asgi.py
 │   ├── __init__.py
 │   ├── __pycache__
 │   │   ├── __init__.cpython-311.pyc
 │   │   ├── settings.cpython-311.pyc
-│   │   └── urls.cpython-311.pyc
+│   │   ├── urls.cpython-311.pyc
+│   │   └── wsgi.cpython-311.pyc
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
@@ -83,4 +103,4 @@
     │   └── python3.11
     └── pyvenv.cfg
 
-22 directories, 62 files
+27 directories, 77 files
