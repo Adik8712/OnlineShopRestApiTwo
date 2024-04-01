@@ -22,8 +22,10 @@ COPY . /app/
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 
+RUN python manage.py collectstatic 
+
 # Открываем порт, который будет использоваться вашим Django приложением
 EXPOSE 8080
 
 # Запускаем сервер Django при старте контейнера
-CMD ["python", "manage.py", "runserver", "127.0.0.1:8080"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]

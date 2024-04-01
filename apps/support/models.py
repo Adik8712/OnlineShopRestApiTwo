@@ -134,3 +134,5 @@ class NotificationSupport(models.Model):
         verbose_name = "Уведомление поддержки"
         verbose_name_plural = "Уведомления поддержки"
         ordering = ['-created_at']
+
+
